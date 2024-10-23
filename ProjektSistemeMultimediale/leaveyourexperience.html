@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LeaveYourExperience</title>
+  <style>
+    body{
+        background: url(leaveye.jpg) no-repeat center center/cover;
+    }
+    h1{
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 45px;
+        font-style: italic;
+    }
+    #start{
+        color: #fff;
+        text-align: center;
+        font-size: 23px;
+        font-weight: 300;
+    }
+    .comment-form {
+      margin-bottom: 100px;
+      background-color: #F4DDD4;
+      height: 150px;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-top: 10px;
+    }
+    .comment-list {
+      list-style-type: none;
+      padding: 0;
+      background-color:  rgba(217, 191, 190, 0.713) ;
+      border-color: #aa7f79;
+      border-bottom: 2px solid #aa7f79;
+        border-top: 2px solid #aa7f79;
+        border-left: 2px solid #aa7f79;
+        border-right: 2px solid #aa7f79;
+    }
+    .comment {
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ccc
+    }
+    .comment-form textarea{
+        background: none;
+        border:2px;
+        border-bottom: 2px solid black;
+        border-top: 2px solid black;
+        border-left: 2px solid black ;
+        border-right: 2px solid black;
+        color: black;
+        font-weight: 200;
+        font-size: 15px;
+        padding: 10px;
+        width:800px;
+    }
+    .comment-form button{
+    border: none;
+    background: #ffff;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #333;
+    width: 100px;
+    padding: 0;
+    margin: center;
+    margin-bottom: 30px;
+    transition: 0.3s;
+    height: 40px;
+}
+
+.comment-form button:hover{
+    opacity: 0.7;
+}
+  </style>
+</head>
+<body>
+    <h1>Leave your own experience</h1>
+    <p id="start">No doubt that each of us has faced or continues to face insecurities about her appearance. The best therapy to deal with this thing is to shout it out. Leave traces of your story in the comments below in order to feel better and inspire other girls and women who are facing the same insecurities as you.<br>"The sparks of your story can become someone else's hope!"</p>
+    <div class="comment-form">
+    <textarea id="comment-input" placeholder="Leave Your Story"></textarea>
+    <br>
+    <input type="file" id="video-upload"  accept="video/*">
+    <br>
+    <button onclick="addComment()">Post It</button>
+  </div>
+
+  <ul id="comment-list" class="comment-list">
+    <!-- Comments will be dynamically added here -->
+  </ul>
+
+  <script>
+    function addComment() {
+      var commentInput = document.getElementById('comment-input');
+      var videoUpload = document.getElementById('video-upload');
+      var commentList = document.getElementById('comment-list');
+
+      var comment = document.createElement('li');
+      comment.className = 'comment';
+
+      var commentText = document.createElement('p');
+      commentText.textContent = commentInput.value;
+      comment.appendChild(commentText);
+
+      if (videoUpload.files.length > 0) {
+        var video = document.createElement('video');
+        video.width = 320;
+        video.height = 240;
+        video.controls = true;
+        video.src = URL.createObjectURL(videoUpload.files[0]);
+        comment.appendChild(video);
+      }
+
+      commentList.appendChild(comment);
+
+      commentInput.value = '';
+      videoUpload.value = '';
+    }
+  </script>
+</body>
+</html>
+
